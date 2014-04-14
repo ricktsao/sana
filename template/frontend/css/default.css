@@ -1,0 +1,389 @@
+@charset "utf-8";
+body,
+html {
+	margin:0px;
+	padding:0px;
+}
+body {
+	background:url(../images/main_bg.jpg) center top no-repeat;
+	font-size:12px;
+	font-family:Arial, "微軟正黑體";
+	line-height:1.5em;
+}
+
+img{
+	border:none;	
+}
+
+#primary {
+	width:960px;
+	margin:0px auto;
+}
+#header {
+	height:87px;
+	position:relative;
+	z-index:20;
+}
+#header > a {
+	position:relative;
+	top:15px;
+	left:30px;
+}
+#header ul,
+ #header li,
+ #resident,
+ #resident li,
+ #sub_navi,
+ #sub_navi > li {
+	padding:0px;
+	margin:0px;
+	list-style:none;
+}
+#navi {
+	position:absolute;
+	right:0px;
+	bottom:0px;
+}
+#navi > li {
+	float:left;
+	position:relative;
+}
+#navi > li > img {
+	position:absolute;
+	top:-5px;
+	right:0px;
+}
+#navi > li > a {
+	display:block;
+	height:54px;
+}
+#navi > li > a#btn_1 {
+	width:115px;
+	background:url(../images/s1-2_03.png);
+}
+#navi > li > a#btn_1:hover {
+	background:url(../images/s1-2-2_03.png);
+}
+#navi > li > a#btn_2 {
+	width:113px;
+	background:url(../images/s1-2_04.png);
+}
+#navi > li > a#btn_2:hover {
+	background:url(../images/s1-2-2_04.png);
+}
+#navi > li > a#btn_3 {
+	width:113px;
+	background:url(../images/s1-2_05.png);
+}
+#navi > li > a#btn_3:hover {
+	background:url(../images/s1-2-2_05.png);
+}
+#navi > li > a#btn_4 {
+	width:113px;
+	background:url(../images/s1-2_06.png);
+}
+#navi > li > a#btn_4:hover {
+	background:url(../images/s1-2-2_06.png);
+}
+#navi > li > a#btn_5 {
+	width:113px;
+	background:url(../images/s1-2_07.png);
+}
+#navi > li > a#btn_5:hover {
+	background:url(../images/s1-2-2_07.png);
+}
+#navi > li > a#btn_6 {
+	width:100px;
+	background:url(../images/s1-2_08.png);
+}
+#navi > li > a#btn_6:hover {
+	background:url(../images/s1-2-2_08.png);
+}
+#resident {
+	position:absolute;
+	right:0px;
+	top:8px;
+	overflow:hidden;
+}
+#resident > li {
+	float:left;
+	margin-left:10px;
+	color:#eaa6a8;
+}
+#resident > li,
+#resident > li > a {
+	color:#eaa6a8;
+	text-decoration:none;
+}
+#kv {
+	background:url(../images/kv_bg.png) center bottom no-repeat;
+	position:relative;
+	z-index:10;
+	padding-bottom:9px;
+	margin-bottom:20px;
+}
+
+
+#slide {
+	width:958px;
+	height:230px;
+	position:relative;
+	z-index:10;
+	margin-left:1px;
+}
+
+#slide > a {
+	display:block;
+	width:100%;
+	height:100%;
+	overflow:hidden;	
+}
+
+
+#slide_btn {
+	position:absolute;
+	bottom:40px;
+	left:40px;
+	z-index:15;
+}
+#slide_btn > a {
+	display:block;
+	float:left;
+	background:url(../images/icon.png);
+	width:10px;
+	height:9px;
+	margin-right:10px;
+}
+#slide_btn > a:hover,
+#slide_btn > a.activeSlide {
+	background-position:-11px 0px;
+}
+
+#middle_area {
+	margin-bottom:10px;	
+	position:relative;
+	z-index:20;
+}
+
+#left {
+	background:url(../images/sub_navi_right_line.png) top right no-repeat;
+	float:left;
+	min-height:548px;
+	width:213px;
+}
+#sub_navi {
+	background:url(../images/sub_navi_bottom_img.png) right bottom no-repeat;
+	padding:0px 0px 120px 25px;
+	/*min-height:500px;*/
+	margin:0px 20px 0px 0px;
+}
+#sub_navi > li {
+	width:159px;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	border-bottom:1px dotted #d2cfc6;
+	position:relative;
+}
+#sub_navi a,
+#sub_navi div {
+	display:block;
+	width:187px;
+}
+#sub_navi > li:hover > a,
+#sub_navi > li:hover > div,
+#sub_navi > li.this > a,
+#sub_navi > li.this > div {
+	background:url(../images/sub_navi_btn.png);
+}
+#sub_navi > li:hover a,
+#sub_navi > li.this a {
+	color:#FFF;
+}
+#sub_navi > li > a {
+	text-decoration:none;
+	padding:6px 10px 6px 15px;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	color:#733f00;
+	position:relative;
+	font-size:15px;
+}
+#sub_navi > li > a > div {
+	position:absolute;
+	left:5px;
+	top:5px;
+}
+#sub_navi > li:hover > a,
+#sub_navi > li.this > a {
+	background-position:-188px;
+}
+#sub_navi > li > div {
+	position:absolute;
+	left:0px;
+}
+#sub_navi > li > div.top_bg {
+	height:4px;
+	top:-4px;
+}
+#sub_navi > li > div.bottom_bg {
+	height:5px;
+	bottom:-5px;
+}
+#sub_navi > li:hover > div.bottom_bg,
+#sub_navi > li.this > div.bottom_bg {
+	background-position:0px -5px;
+}
+#content {
+	margin-left:260px;
+	padding:10px 0px 0px 0px;
+	position:relative;
+	
+}
+#title {
+	position:relative;
+	padding-left:15px;
+	color:#763b1b;
+	font-size:17px;
+	font-weight:bold;
+	margin-bottom:25px;
+}
+#title_icon {
+	position:absolute;
+	background:url(../images/icon.png) 0px -10px;
+	width:12px;
+	height:12px;
+	left:0px;
+	top:3px;
+}
+#footer {
+	background:url(../images/footer.jpg) center center;
+	height:	72px;
+}
+#footer > div {
+	width:960px;
+	margin:0px auto;
+}
+#footer > div > div {
+	text-align:center;
+	color:#9a6d6c;
+	margin-left:230px;
+	padding-top:8px;
+	line-height:1.6em;
+}
+
+#btns {
+	position:absolute;
+	right:0px;
+	top:-28px;	
+}
+
+#btns > a {
+	display:block;
+	float:left;
+	width:123px;
+	height:27px;
+	background:url(../images/btns.png);
+	margin-left:2px;
+}
+
+#btns > a#btns_1 {
+	
+}
+
+#btns > a#btns_1:hover,
+#btns > a#btns_1.this{
+	
+	background-position:0px -28px;
+}
+
+#btns > a#btns_2 {
+	background-position:-124px 0px;
+}
+
+
+#btns > a#btns_2:hover,
+#btns > a#btns_2.this {
+	background-position:-124px -28px;
+}
+
+
+#btns > a#btns_3 {
+	background-position:-248px 0px;
+}
+
+#btns > a#btns_3:hover,
+#btns > a#btns_3.this {
+	background-position:-248px -28px;
+}
+
+#pager {
+	text-align:center;
+	padding-top:10px;
+}
+
+#pager > a,
+#pager > div {
+	display:inline-block;
+	*display:inline;
+	zoom:1;	
+	margin:0px 4px;
+	font-size:13px;
+}
+
+#pager > a {
+	color:#666;
+	text-decoration:none;	
+}
+
+#pager > a:hover,
+#pager > div {
+	color:#e82035;	
+}
+
+#pager > a.arrow{
+	width:11px;
+	height:17px;
+	background:url(../images/icon.png) -60px 0px;
+	margin-bottom:-4px;
+	
+}
+
+#pager > a.arrow#next_btn{
+	background-position:-72px 0px;	
+}
+
+
+.line{
+	background:url(../images/product/line.png);
+	width:719px;
+	height:1px;
+	clear:both;
+	margin:0px 0px 25px 64px;
+
+		
+}
+
+
+#inquiry_form {
+	border:1px solid #eee;
+	width:600px;
+	margin:0px auto;
+	color:#733f00;
+}
+
+#inquiry_form td {
+	padding:5px 10px;
+}
+
+#inquiry_form  tr > td:first-child{
+	text-align:right;
+}	
+
+#inquiry_form input[type=text],
+#inquiry_form textarea{
+	width:400px;	
+}
+
+#inquiry_form textarea {
+	height:150px;	
+}
