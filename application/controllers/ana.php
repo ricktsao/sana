@@ -57,6 +57,48 @@ class Ana extends Frontend_Controller {
 	}
 	
 	
+	/* 
+	 * show 信用交易
+	 * 
+	 */
+	public function credit($stock_no="")
+	{	
+		
+		$p_url = 'https://tw.stock.yahoo.com/d/s/credit_'.$stock_no.'.html';
+		
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+		curl_setopt($curl, CURLOPT_HEADER, false);
+		curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+		curl_setopt($curl, CURLOPT_URL, $p_url);
+		curl_setopt($curl, CURLOPT_REFERER, $p_url);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+		$return_html_str = curl_exec($curl);
+		curl_close($curl);
+		
+		
+		// Create a DOM object
+		$html_base = new simple_html_dom();
+		// Load HTML from a string
+		$html_base->load($return_html_str);
+		
+		$credit_data = $html_base->find('table',8);
+		echo $credit_data;
+		
+		$credit_chart = $html_base->find('table',9);
+		$credit_chart = str_replace("/i/d/","https://tw.stock.yahoo.com/i/d/",$credit_chart); 
+
+		echo $credit_chart;		
+		
+		$html_base->clear(); 
+		unset($html_base);
+		
+		
+
+	}
+	
+	
+	
 	
 	/* 
 	 * 取得董監事,外資,投信,自營商持股比列 
