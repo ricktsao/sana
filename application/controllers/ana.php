@@ -57,8 +57,26 @@ class Ana extends Frontend_Controller {
 	}
 	
 	
-	//更新stock info
-	public function updateStock()
+	
+	
+	public function updateStockShareholding()
+	{
+		$p_url = 'http://jsjustweb.jihsun.com.tw/z/zc/zcj/zcj_3693.djhtm';
+		$html = file_get_html($p_url);
+		
+		$html = $html->find('table',1);
+		$directors = $html->find('table',1)->find('tr',2)->find('td',2)->plaintext;
+		$foreign = $html->find('table',1)->find('tr',3)->find('td',2)->plaintext;
+		$it = $html->find('table',1)->find('tr',4)->find('td',2)->plaintext;
+		$dealer = $html->find('table',1)->find('tr',5)->find('td',2)->plaintext;
+		$total_stock = $html->find('table',1)->find('tr',7)->find('td',1)->plaintext;
+		echo $foreign;
+	}
+	
+	
+	///更新stock info
+	///執行週期 : 一周一次	
+	public function updateStockInfo()
 	{	
 		set_time_limit(1800);
 		for($i=1101;$i<10000;$i++)
@@ -105,6 +123,7 @@ class Ana extends Frontend_Controller {
         	(				
         		  "stock_name" => $stock_name 			
         		, "stock_cat" => $stock_cat
+				, "stock_type" => $stock_type
 				, "launch" => $stock_launch
 				, "update_date" =>  date( "Y-m-d H:i:s" )
 			);      
@@ -121,8 +140,6 @@ class Ana extends Frontend_Controller {
 		}
 	
 		echo 'done...';	
-		
-		
         
 	}
 	
