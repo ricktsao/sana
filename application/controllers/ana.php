@@ -58,29 +58,71 @@ class Ana extends Frontend_Controller {
 	
 	
 	
-	
+	/* 
+	 * 取得董監事,外資,投信,自營商持股比列 
+	 * 執行週期 : 一月一次	
+	 */
 	public function updateStockShareholding()
 	{
-		$p_url = 'http://jsjustweb.jihsun.com.tw/z/zc/zcj/zcj_3693.djhtm';
-		$html = file_get_html($p_url);
+		set_time_limit(1800);
 		
-		$html = $html->find('table',1);
-		$directors = $html->find('table',1)->find('tr',2)->find('td',2)->plaintext;
-		$foreign = $html->find('table',1)->find('tr',3)->find('td',2)->plaintext;
-		$it = $html->find('table',1)->find('tr',4)->find('td',2)->plaintext;
-		$dealer = $html->find('table',1)->find('tr',5)->find('td',2)->plaintext;
-		$total_stock = $html->find('table',1)->find('tr',7)->find('td',1)->plaintext;
-		echo $foreign;
+		$list = $this->it_model->listData( "stock" , "launch = 1" , NULL , NULL , array("stock_no"=>"asc") );
+		$stock_list = $list["data"];
+		
+		foreach( $stock_list as $item )
+		{
+			//$p_url = 'http://jsjustweb.jihsun.com.tw/z/zc/zcj/zcj_2540.djhtm';
+			
+			$p_url = 'http://jsjustweb.jihsun.com.tw/z/zc/zcj/zcj_'.$item["stock_no"].'.djhtm';
+			$html = file_get_html($p_url);
+			if(count($html->find('table')) != 6)
+			{
+				continue;
+			}
+			
+			$html = $html->find('table',1);
+			$directors = $html->find('table',1)->find('tr',2)->find('td',2)->plaintext;
+			$foreign = $html->find('table',1)->find('tr',3)->find('td',2)->plaintext;
+			$it = $html->find('table',1)->find('tr',4)->find('td',2)->plaintext;
+			$dealer = $html->find('table',1)->find('tr',5)->find('td',2)->plaintext;
+			$total_stock = $html->find('table',1)->find('tr',7)->find('td',1)->plaintext;
+			$total_stock = str_replace(",","",$total_stock); 
+			
+			$arr_data = array
+			(				
+				  "stock_no" => $item["stock_no"]
+				, "stock_name" => $item["stock_name"]
+				, "directors" => (float)$directors
+				, "foreign" => (float)$foreign
+				, "it" => (float)$it
+				, "dealer" => (float)$dealer
+				, "total_stock" => (int)$total_stock
+				, "update_date" =>  date( "Y-m-d H:i:s" )
+			);
+		
+			if( ! $this->it_model->updateData( "stock_shareholding" , $arr_data, "stock_no = '".$item["stock_no"]."'" ))
+			{
+				$arr_data["stock_no"] = $item["stock_no"];
+				
+				$this->it_model->addData( "stock_shareholding" , $arr_data );
+			}	
+		
+		
+			echo '<br>'.$item["stock_no"];
+		}		
+		echo 'done...';	
 	}
 	
 	
-	///更新stock info
-	///執行週期 : 一周一次	
+	
+	/* 
+	 * 更新股票基本資訊
+	 * 執行週期 : 一週一次	
+	 */
 	public function updateStockInfo()
 	{	
 		set_time_limit(1800);
 		for($i=1101;$i<10000;$i++)
-		//for($i=3046;$i<3047;$i++)
 		{
 			$p_url = 'http://isin.twse.com.tw/isin/single_main.jsp?owncode='.$i.'&stockname=';
 			$html = file_get_html($p_url);
